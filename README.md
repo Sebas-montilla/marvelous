@@ -10,12 +10,12 @@ Welcome to Marvelous documentation. This guide will help you get started with ou
 You can access Marvelous in two ways:
 
 #### Option 1: Download the Repository (Local Setup)
-Clone the repository from our GitHub page: git clone https://github.com/your-username/character-portal.git
+Clone the repository from our GitHub page: git clone https://github.com/Sebas-montilla/marvelous.git
 
 CD trought the application folder, it should be call marvelous. Then run ng-serve on your terminal, the application should start, and you will see a message indicating that it's running on a local server (usually, http://localhost:4200/).
 
 #### Option 2: Use the Deployed Version
-Alternatively, you can access the application via the deployed version at https://your-deployed-url.com.
+Alternatively, you can access the application via the deployed version at https://marvelous-seven.vercel.app/characters
 
 ## Step 2: Exploring Characters
 Marvelous primarily focuses on characters. Here's how you can interact with it:
