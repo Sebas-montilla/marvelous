@@ -1,0 +1,28 @@
+<nav
+  class="bg-[#191919] justify-center items-center justify-between px-8 py-2 flex border-b border-b-[3px] border-white/25"
+>
+  <img
+    src="../../assets/marvel-logo.png"
+    alt="logo"
+    class="w-[100px] md:w-[150px]"
+  />
+
+  <!-- <ul class="hidden md:flex items-center justify-between text-white">
+    <li *ngFor="let link of navLinks" class="ml-8 font-semibold hover:text-[#e73e44] cursor-pointer">
+        <a routerLinkActive='active' [routerLink]="link.path">{{link.label}}</a>
+    </li>
+  </ul> -->
+  <div class="menu-toggle" (click)="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <ul [ngClass]="{ open: isMenuOpen }">
+    <li
+      *ngFor="let link of navLinks"
+      class="ml-8 font-semibold hover:text-[#e73e44] cursor-pointer"
+    >
+      <a routerLinkActive="active" [routerLink]="link.path">{{ link.label }}</a>
+    </li>
+  </ul>
+</nav>

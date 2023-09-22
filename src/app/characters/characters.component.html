@@ -1,0 +1,68 @@
+<!-- src/app/characters/characters.component.html -->
+<div class="flex flex-col items-center">
+  <div class="banner">
+    <div class="ml-[3rem]">
+      <h2 class="text-[1rem] md:text-[1.2rem] font-bold text-white/50">HOME • CHARACTERS</h2>
+      <h2 class="text-[2.4rem] md:text-[2.5rem] font-bold text-white">
+        Explore Marvel's Heroic Universe Here!
+      </h2>
+    </div>
+  </div>
+
+  <div
+    class="flex flex-col items-center bg-gradient-to-bl from-black via-slate-700/10 to-black"
+  >
+    <div class="mt-[3rem]">
+      <app-search-bar
+        (search)="filterCharactersBySearch($event)"
+      ></app-search-bar>
+    </div>
+    <div class="mx-[2rem] md:mx-[1rem]">
+      <app-alphabet-filter
+        (letterSelected)="filterCharactersByLetter($event)"
+      ></app-alphabet-filter>
+    </div>
+
+    <!-- CARD -->
+    <div class="flex flex-wrap justify-center gap-8 mx-4 my-8">
+      <div
+        *ngFor="
+          let character of filteredCharacters
+            | paginate : { itemsPerPage: 10, currentPage: p }
+        "
+        class="w-[20rem] min-h-[15rem] bg-[#373737] shrink-0 rounded-[15px]"
+      >
+        <a [routerLink]="['/characters', character.id]" class="linkCharacters">
+          <div class="locura">
+            <div class="image-container">
+              <img
+                [src]="
+                  character.thumbnail.path + '.' + character.thumbnail.extension
+                "
+                alt="{{ character.name }}"
+              />
+            </div>
+            <div class="p-4">
+              <h2 class="text-white font-semibold uppercase">
+                {{ character.name }}
+              </h2>
+              <h3 class="text-white/70">
+                Comics:
+                {{ character.comics.available }}
+              </h3>
+              <h3 class="text-white/70">
+                Series:
+                {{ character.series.available }}
+              </h3>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

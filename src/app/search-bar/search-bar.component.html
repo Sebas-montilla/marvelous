@@ -1,0 +1,9 @@
+<div class="search-bar">
+  <input
+    class="border-2 border-white/25 text-white p-2 rounded-full focus:outline-none focus:ring focus:ring-[#ED1D24]/40 w-[300px] bg-[#373737]"
+    type="text"
+    placeholder="Search character..."
+    [(ngModel)]="searchQuery"
+    (input)="onSearch()"
+  />
+</div>

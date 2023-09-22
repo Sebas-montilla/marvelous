@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center gap-[1rem] my-[3rem] flex-wrap">
+  <div
+    class="w-[40px] h-[40px] bg-white/25 text-white flex items-center justify-center rounded-full cursor-pointer"
+    *ngFor="let letter of alphabet"
+    (click)="selectLetter(letter)"
+    [class.selected]="letter === selectedLetter"
+    >{{ letter }}</div
+  >
+</div>

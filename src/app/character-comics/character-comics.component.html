@@ -1,0 +1,46 @@
+<div>
+  <div class="banner">
+    <div class="ml-[3rem]">
+      <h2 class="text-[1rem] md:text-[1.2rem] font-bold text-white/50">
+        HOME • CHARACTERS • COMICS
+      </h2>
+      <h2 class="text-[2.4rem] md:text-[2.5rem] font-bold text-white uppercase">
+        Full comics
+      </h2>
+    </div>
+  </div>
+  <div
+    class="flex flex-col items-center bg-gradient-to-bl from-black via-slate-700/10 to-black"
+  >
+    <!-- CARD -->
+    <div class="flex flex-wrap justify-center gap-8 mx-4 my-8">
+      <div
+        *ngFor="let comic of characterComics"
+        class="w-[20rem] min-h-[15rem] bg-[#373737] shrink-0 rounded-[15px]"
+      >
+        <div class="info-container">
+          <div class="image-container">
+            <img
+              [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+              alt="comic logo"
+              width="100"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-white">{{ comic.title }}</h3>
+            <h3 class="text-white/70">Price: {{ comic.prices[0].price }}</h3>
+            <h3 class="text-white/70">
+              Writer:
+              {{
+                comic.creators.items[0].role === "writer"
+                  ? comic.creators.items[0].name
+                  : "Not available"
+              }}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

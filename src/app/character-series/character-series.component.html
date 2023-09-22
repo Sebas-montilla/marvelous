@@ -1,0 +1,44 @@
+<div>
+  <div class="banner">
+    <div class="ml-[3rem]">
+      <h2 class="text-[1rem] md:text-[1.2rem] font-bold text-white/50">
+        HOME • CHARACTERS • SERIES
+      </h2>
+      <h2 class="text-[2.4rem] md:text-[2.5rem] font-bold text-white uppercase">
+        Full series
+      </h2>
+    </div>
+  </div>
+  <div
+    class="flex flex-col items-center bg-gradient-to-bl from-black via-slate-700/10 to-black"
+  >
+    <!-- CARD -->
+    <div class="flex flex-wrap justify-center gap-8 mx-4 my-8">
+      <div
+        *ngFor="let serie of characterSeries"
+        class="w-[20rem] min-h-[15rem] bg-[#373737] shrink-0 rounded-[15px]"
+      >
+        <div class="info-container">
+          <div class="image-container">
+            <img
+              [src]="serie.thumbnail.path + '.' + serie.thumbnail.extension"
+              alt="serie logo"
+              width="100"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-white text-[1.2rem]">{{ serie.title }}</h3>
+            <h4 class="text-white/70">Start Year: {{ serie.startYear }}</h4>
+            <h4 class="text-white/70">End Year: {{ serie.endYear }}</h4>
+            <h4 class="text-white/70">
+              Type:
+              {{ serie.type ? serie.type : "Not available" }}
+              <!-- Type: {{ serie.type }} -->
+            </h4>
+            <h4 class="text-white/70">Rating: {{ serie.rating }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

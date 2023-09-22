@@ -1,0 +1,114 @@
+<div>
+  <div *ngFor="let character of character">
+    <div class="banner">
+      <div class="ml-[3rem]">
+        <h2 class="text-[1rem] md:text-[1.2rem] font-bold text-white/50">
+          HOME • CHARACTERS • DETAIL
+        </h2>
+        <h2
+          class="text-[2.4rem] md:text-[2.5rem] font-bold text-white uppercase"
+        >
+          {{ character.name }}
+        </h2>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row items-center mx-[1rem] md:mx-[8rem] mt-[3rem] gap-[2rem]"
+    >
+      <img
+        [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
+        alt="{{ character.name }}"
+        class="w-[350px] rounded-full"
+      />
+      <div class="flex flex-col">
+        <h1 class="uppercase text-white text-[2rem] font-semibold">
+          {{ character.name }}
+        </h1>
+        <p
+          class="text-white/70 text-[1.4rem]"
+          *ngIf="character.description; else noDescription"
+        >
+          {{ character.description }}
+        </p>
+        <ng-template #noDescription>Description not available</ng-template>
+      </div>
+    </div>
+
+    <div
+      class="mx-[1rem] mt-[3rem] md:mx-[8rem] border-t border-t-[3px] border-white/25 pt-[3rem]"
+    >
+      <h1 class="text-white text-[1.3rem] uppercase font-semibold">
+        Comics related
+      </h1>
+      <!-- CARD -->
+      <div class="flex flex-col gap-[1rem] mt-[2rem]">
+        <div
+          *ngFor="let comic of characterComics"
+          class="flex gap-[2rem] bg-[#373737] p-3 shadow-lg shadow-slate-700/25 rounded-lg"
+        >
+          <img
+            [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+            alt="comic logo"
+            width="150"
+            class="rounded-sm"
+          />
+          <div class="flex flex-col gap-[0.5rem]">
+            <h3 class="text-white text-[1.2rem]">{{ comic.title }}</h3>
+            <h3 class="text-white/70">Price: {{ comic.prices[0].price }}</h3>
+            <h3 class="text-white/70">
+              Writer:
+              {{
+                comic.creators.items[0].role === "writer"
+                  ? comic.creators.items[0].name
+                  : "Not available"
+              }}
+            </h3>
+          </div>
+        </div>
+        <a [routerLink]="['/characters', character.id, 'comics']">
+          <button
+            class="py-2 px-4 bg-[#ED1D24] hover:bg-[#ED1D24]/70 text-white rounded-full"
+          >
+            Explore all comics
+          </button>
+        </a>
+      </div>
+
+      <div class="mt-[3rem] border-t border-t-[3px] border-white/25 pt-[3rem]">
+        <h1 class="text-white text-[1.3rem] uppercase font-semibold">
+          Series related
+        </h1>
+        <div
+          *ngFor="let serie of characterSeries"
+          class="flex gap-[2rem] mt-[2rem] bg-[#373737] p-3 shadow-lg shadow-slate-700/25 rounded-lg"
+        >
+          <img
+            [src]="serie.thumbnail.path + '.' + serie.thumbnail.extension"
+            alt="serie logo"
+            width="150"
+            class="rounded-sm"
+          />
+          <div class="flex flex-col gap-[0.5rem]">
+            <h3 class="text-white text-[1.2rem]">{{ serie.title }}</h3>
+            <h4 class="text-white/70">Start Year: {{ serie.startYear }}</h4>
+            <h4 class="text-white/70">End Year: {{ serie.endYear }}</h4>
+            <h4 class="text-white/70">
+              Type:
+              {{ serie.type ? serie.type : "Not available" }}
+              <!-- Type: {{ serie.type }} -->
+            </h4>
+            <h4 class="text-white/70">Rating: {{ serie.rating }}</h4>
+          </div>
+        </div>
+        <a [routerLink]="['/characters', character.id, 'series']">
+          <button
+            class="mt-[1rem] mb-[3rem] py-2 px-4 bg-[#ED1D24] hover:bg-[#ED1D24]/70 text-white rounded-full"
+          >
+            Explore all series
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
